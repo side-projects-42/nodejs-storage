@@ -1,16 +1,10 @@
-#!/usr/bin/env node
-
-
-//
-
-
-
-
+/* eslint-disable node/no-missing-require */
 'use strict';
 
 const {Storage} = require('@google-cloud/storage');
 const storage = new Storage();
-const NAME_REG_EXP = /^nodejs-storage-samples-[a-z0-9]{8}-[a-z0-9]{4}-[a-z0-9]{4}-[a-z0-9]{4}-[a-z0-9]{12}$/;
+const NAME_REG_EXP =
+  /^nodejs-storage-samples-[a-z0-9]{8}-[a-z0-9]{4}-[a-z0-9]{4}-[a-z0-9]{4}-[a-z0-9]{12}$/;
 
 storage
   .getBuckets()
@@ -18,10 +12,11 @@ storage
     let promise = Promise.resolve();
 
     buckets
-      .filter((bucket) => NAME_REG_EXP.test(bucket.name))
-      .forEach((bucket) => {
+      .filter(bucket => NAME_REG_EXP.test(bucket.name))
+      .forEach(bucket => {
         promise = promise.then(() => {
-          return bucket.deleteFiles()
+          return bucket
+            .deleteFiles()
             .then(() => bucket.deleteFiles(), console.error)
             .then(() => {
               console.log(`Deleting ${bucket.name}`);
@@ -31,6 +26,6 @@ storage
         });
       });
   })
-  .catch((err) => {
+  .catch(err => {
     console.error('ERROR:', err);
   });
