@@ -1,5 +1,4 @@
 
-//
 
 
 
@@ -790,8 +789,7 @@ class File extends ServiceObject<File> {
        * //-
        * // Set a temporary hold on this file from its bucket's retention period
        * // configuration.
-       * //
-       * file.setMetadata({
+       *        * file.setMetadata({
        *   temporaryHold: true
        * }, function(err, apiResponse) {});
        *
@@ -919,8 +917,7 @@ class File extends ServiceObject<File> {
    *
    * //-
    * // You can pass in a variety of types for the destination.
-   * //
-   * // For all of the below examples, assume we are working with the following
+   *    * // For all of the below examples, assume we are working with the following
    * // Bucket and File objects.
    * //-
    * const bucket = storage.bucket('my-bucket');
@@ -947,8 +944,7 @@ class File extends ServiceObject<File> {
    * file.copy(newLocation, function(err, copiedFile, apiResponse) {
    *   // `my-bucket` still contains:
    *   // - "my-image.png"
-   *   //
-   *   // `another-bucket` now contains:
+   *      *   // `another-bucket` now contains:
    *   // - "my-image-copy.png"
    *
    *   // `copiedFile` is an instance of a File object that refers to your new
@@ -963,8 +959,7 @@ class File extends ServiceObject<File> {
    * file.copy(anotherBucket, function(err, copiedFile, apiResponse) {
    *   // `my-bucket` still contains:
    *   // - "my-image.png"
-   *   //
-   *   // `another-bucket` now contains:
+   *      *   // `another-bucket` now contains:
    *   // - "my-image.png"
    *
    *   // `copiedFile` is an instance of a File object that refers to your new
@@ -979,8 +974,7 @@ class File extends ServiceObject<File> {
    * file.copy(anotherFile, function(err, copiedFile, apiResponse) {
    *   // `my-bucket` still contains:
    *   // - "my-image.png"
-   *   //
-   *   // `another-bucket` now contains:
+   *      *   // `another-bucket` now contains:
    *   // - "my-awesome-image.png"
    *
    *   // Note:
@@ -1209,8 +1203,7 @@ class File extends ServiceObject<File> {
    * @example
    * //-
    * // <h4>Downloading a File</h4>
-   * //
-   * // The example below demonstrates how we can reference a remote file, then
+   *    * // The example below demonstrates how we can reference a remote file, then
    * // pipe its contents to a local file. This is effectively creating a local
    * // backup of your remote data.
    * //-
@@ -1348,8 +1341,7 @@ class File extends ServiceObject<File> {
 
       // We listen to the response event from the request stream so that we
       // can...
-      //
-      //   1) Intercept any data from going to the user if an error occurred.
+            //   1) Intercept any data from going to the user if an error occurred.
       //   2) Calculate the hashes from the http.IncomingMessage response
       //   stream,
       //      which will return the bytes from the source without decompressing
@@ -1748,8 +1740,7 @@ class File extends ServiceObject<File> {
    *
    * //-
    * // <h4>Uploading a File</h4>
-   * //
-   * // Now, consider a case where we want to upload a file to your bucket. You
+   *    * // Now, consider a case where we want to upload a file to your bucket. You
    * // have the option of using {@link Bucket#upload}, but that is just
    * // a convenience method which will do the following.
    * //-
@@ -1777,8 +1768,7 @@ class File extends ServiceObject<File> {
    *
    * //-
    * // <h4>Uploading a File with Metadata</h4>
-   * //
-   * // One last case you may run into is when you want to upload a file to your
+   *    * // One last case you may run into is when you want to upload a file to your
    * // bucket and set its metadata at the same time. Like above, you can use
    * // {@link Bucket#upload} to do this, which is just a wrapper around
    * // the following.
@@ -1925,8 +1915,7 @@ class File extends ServiceObject<File> {
     // This is to preserve the `finish` event. We wait until the request stream
     // emits "complete", as that is when we do validation of the data. After
     // that is successful, we can allow the stream to naturally finish.
-    //
-    // Reference for tracking when we can use a non-hack solution:
+        // Reference for tracking when we can use a non-hack solution:
     // https://github.com/nodejs/node/pull/2314
     fileWriteStream.on('prefinish', () => {
       stream.cork();
@@ -3318,8 +3307,7 @@ class File extends ServiceObject<File> {
    * const storage = new Storage();
    * //-
    * // You can pass in a variety of types for the destination.
-   * //
-   * // For all of the below examples, assume we are working with the following
+   *    * // For all of the below examples, assume we are working with the following
    * // Bucket and File objects.
    * //-
    * const bucket = storage.bucket('my-bucket');
@@ -3347,8 +3335,7 @@ class File extends ServiceObject<File> {
    * file.move(newLocation, function(err, destinationFile, apiResponse) {
    *   // `my-bucket` no longer contains:
    *   // - "my-image.png"
-   *   //
-   *   // `another-bucket` now contains:
+   *      *   // `another-bucket` now contains:
    *   // - "my-image-new.png"
    *
    *   // `destinationFile` is an instance of a File object that refers to your
@@ -3364,8 +3351,7 @@ class File extends ServiceObject<File> {
    * file.move(anotherBucket, function(err, destinationFile, apiResponse) {
    *   // `my-bucket` no longer contains:
    *   // - "my-image.png"
-   *   //
-   *   // `another-bucket` now contains:
+   *      *   // `another-bucket` now contains:
    *   // - "my-image.png"
    *
    *   // `destinationFile` is an instance of a File object that refers to your
@@ -3381,8 +3367,7 @@ class File extends ServiceObject<File> {
    * file.move(anotherFile, function(err, destinationFile, apiResponse) {
    *   // `my-bucket` no longer contains:
    *   // - "my-image.png"
-   *   //
-   *   // `another-bucket` now contains:
+   *      *   // `another-bucket` now contains:
    *   // - "my-awesome-image.png"
    *
    *   // Note:
@@ -3489,8 +3474,7 @@ class File extends ServiceObject<File> {
    *
    * //-
    * // You can pass in a string or a File object.
-   * //
-   * // For all of the below examples, assume we are working with the following
+   *    * // For all of the below examples, assume we are working with the following
    * // Bucket and File objects.
    * //-
    *
